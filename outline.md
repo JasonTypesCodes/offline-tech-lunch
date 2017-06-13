@@ -19,8 +19,8 @@
 
 ## Creating an Offline Web Application
   1. Identify required resources
-    A. Static Artifacts
-    B. Data from services
+    + Static Artifacts
+    + Data from services
   2. Identify a offline-mitigation strategy for each resource identified
 
 ### Identifying required resources

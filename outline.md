@@ -55,6 +55,8 @@
 ## Technologies Available
 
 ### Knowing Connection State
+  + `Navigator.onLine`
+  + Offline.js
 ### Storing Application Artifacts (AppCache)
 ### Storing Data from Server
 ### Authentication

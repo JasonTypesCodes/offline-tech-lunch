@@ -1,7 +1,9 @@
+require('typopro-web/web/TypoPRO-Montserrat/TypoPRO-Montserrat.css');
+require('typopro-web/web/TypoPRO-SinkinSans/TypoPRO-SinkinSans.css');
 
 require('reveal.js/css/reveal.css');
 
-require('reveal.js/css/theme/beige.css');
+require('./my-theme.scss');
 require('./style.scss');
 
 require('script-loader!reveal.js/js/reveal.js');

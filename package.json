@@ -2,7 +2,7 @@
   "name": "offline-tech-lunch",
   "version": "1.0.0",
   "description": "Offline Web Application Tech Lunch",
-    "scripts": {
+  "scripts": {
     "build": "shx rm -rf ./dist && webpack",
     "serve": "webpack-dev-server --content-base presentation --inline --port 4100"
   },
@@ -24,6 +24,7 @@
     "script-loader": "0.7.0",
     "shx": "0.2.2",
     "style-loader": "0.18.2",
+    "typopro-web": "3.7.2",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
     "webpack-dev-server": "2.5.0"

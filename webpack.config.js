@@ -7,6 +7,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/build/'),
     filename: 'presentation.js'
   },
+  devServer: {
+    contentBase: [
+      path.join(__dirname, 'presentation'),
+      path.join(__dirname, 'node_modules/reveal.js/')
+    ]
+  },
   module: {
     rules: [ 
       {

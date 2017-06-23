@@ -12,6 +12,24 @@
             <li>This is normal text</li>
             <li><a href="http://jason.types.codes">This is a link</a></li>
           </ul>
+          <pre><code data-trim data-noescape>
+            function(a, b, c) {
+              const d = 1 + 12;
+              
+              return () -> {
+                return a ? b : d - c;
+              };
+            }
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape>
+            (def lazy-fib
+              (concat
+              [0 1]
+              ((fn rfib [a b]
+                (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+          </code></pre>
         </section>
       </div>
     </div>

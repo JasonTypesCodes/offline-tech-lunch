@@ -46,7 +46,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               mimetype: 'application/font-woff',
-              limit: '10000'
+              limit: '10000',
+              name: './fonts/[hash].[ext]'
             }
           }
         ]
@@ -55,7 +56,10 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              name: './fonts/[hash].[ext]'
+            }
           }
         ]
       },
@@ -64,26 +68,6 @@ module.exports = {
         use: [ 
           {
             loader: 'file-loader'
-          }
-        ]
-      },
-      {
-        test: /index\.html$/,
-        use: [ 
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          },
-          {
-            loader: 'extract-loader'
-          },
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: ['img:src', 'section:data-background']
-            }
           }
         ]
       }

@@ -14,7 +14,7 @@ require('script-loader!reveal.js/lib/js/head.min.js');
 require('script-loader!reveal.js/js/reveal.js');
 
 Reveal.initialize({
-  center: false,
+  center: true,
   progress: false,
   controls: true,
 

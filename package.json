@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Offline Web Application Tech Lunch",
   "scripts": {
-    "build": "shx rm -rf ./dist && webpack",
+    "build": "shx rm -rf ./dist && webpack && shx cp presentation/index.html dist/build/ && shx cp -R node_modules/reveal.js/plugin dist/build/",
     "serve": "webpack-dev-server --inline --port 4100"
   },
   "repository": {

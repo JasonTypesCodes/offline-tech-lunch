@@ -1,34 +1,30 @@
 .bland {
-	color: #fff !important;
+  color: #fff !important;
 }
 
 .lots-of-space {
-	padding-top: 100px !important;
+  padding-top: 100px !important;
 }
 
 .bits-of-space {
-	padding-top: 45px !important;
+  padding-top: 45px !important;
 }
 
 .tons-of-space {
-	padding-top: 450px !important;
+  padding-top: 450px !important;
 }
 
 .hard-left {
-	text-align: left !important;
-}
-
-.nudge-right {
-	text-align: left !important;
+  text-align: left !important;
 }
 
 .slim {
-	margin: 0 !important;
-	padding: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .hard-right {
-	text-align: right !important;
+  text-align: right !important;
 }
 
 .reveal .fa {
@@ -37,41 +33,63 @@
 }
 
 .reveal code {
-	font-family: 'TypoPRO Source Code Pro', monospace;
-	font-size: 22px;
-	line-height: 1.4em;
+  font-family: 'TypoPRO Source Code Pro', monospace;
 }
 
-ul.no-bullets {
-	list-style-type: none !important;
-}
+ul,ol {
+  li:first-child {
+    padding-top: 0.3em !important;
+  }
 
-ul.hard-left {
-	display: inline;
-	
-	li {
-		padding-left: 25px;
-	}
+  li {
+    padding-top: 0.3em !important;
+  }
+  
+  &.bits-of-space {
+    li:first-child {
+      padding-top: 45px !important;
+    }
+  }
+  
+  &.no-bullets {
+    list-style-type: none !important;
+  }
+
+  &.hard-left {
+    display: inline;
+  
+    li {
+      margin-left: 35px;
+    }
+  }
+
+  &.indent-left {
+    display: inline;
+
+    li {
+      margin-left: 90px;
+    }
+  }
 }
 
 dl {
-	dt {
-		font-size: 45px !important;
-		color: #E9C153 !important;
-	}
+  dt {
+    font-size: 45px !important;
+    color: #E9C153 !important;
+  }
 
-	dd {
-		font-size: 32px !important;
-		padding-bottom: 25px !important;
-	}
+  dd {
+    font-size: 32px !important;
+    padding-bottom: 25px !important;
+  }
 }
 
 img.boring {
-	background: none !important;
-	border: none !important;
-	box-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 img.standard {
-	max-height: 350px;
+  max-height: 350px;
 }

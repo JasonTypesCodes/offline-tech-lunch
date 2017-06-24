@@ -14,16 +14,101 @@
           <p><a href="http://jason.types.codes">jason.types.codes</a></p>
         </section>
         <section>
-          <h1 class="hard-left">Offline Web Apps?</h1>
+          <h2 class="hard-left">Offline Web Application</h2>
+          <p class="lots-of-space hard-left">A <b>web application</b> that has been designed to perform at <b>some capacity</b> while <b>offline</b>.</p>
         </section>
         <section>
-          <pre><code data-trim data-noescape>
-            (def lazy-fib
-              (concat
-              [0 1]
-              ((fn rfib [a b]
-                (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+          <h2 class="hard-left">Offline Web Application</h2>
+          <p class="bits-of-space hard-left">At <b>some capacity</b>:</p>
+          <ul class="hard-left">
+            <li class="fragment">Caching server operations for later</li>
+            <li class="fragment">Adding/removing features while running</li>
+            <li class="fragment">Communication with user about connection state</li>
+            <li class="fragment">Server? We don't need no stinkin' server!</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Why Offline Apps?</h2>
+          <p class="bits-of-space hard-left">Many web applications do not run in traditional browsers.</p>
+          <ul class="hard-left">
+            <li>Mobile Apps in Cordova</li>
+            <li>Desktop Apps in Electron</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">&#8220;Offline&dash;First&#8221; Development</h2>
+          <p class="bits-of-space hard-left">Much easier to create a new appliction with offline functionality than it is to add it later.</p>
+          <p class="bits-of-space hard-left">Similar idea to &#8220;Mobile&dash;First&#8221; apps.</p>
+        </section>
+        <section>
+          <h2 class="hard-left">Getting Started</h2>
+          <ol class="bits-of-space">
+            <li class="fragment">Identify basic resources needed to run offline</li>
+            <li class="fragment">Pick strategy to cache resources (if needed)</li>
+            <li class="fragment">Pick strategy to detect connection state</li>
+            <li class="fragment">For each feature, pick strategy for handling connection state changes</li>
+          </ol>
+        </section>
+        <section>
+          <h2 class="hard-left">Identifying Base Resources</h2>
+          <p class="hard-left bits-of-space">The resources needed to run the application.</p>
+          <ul>
+            <li class="fragment">Static files (html, js, css, images)</li>
+            <li class="fragment">Configuration / reference data from service</li>
+            <li class="fragment">Other mostly&dash;static data (l10n messages)</li>
+          </ul>
+          <p class="hard-left bits-of-space fragment">Depending on app distribution method, some of these might not need to be cached</p>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest</h4>
+          <p class="hard-left bits-of-space">A manifest of static resources that a browser should cache so that they can be used if the application is loaded offline</p>
+          <p class="hard-left bits-of-space"><b>DEPRECATED</b>... But can sometimes be the only option</p>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest &dash; Example:</h4>
+          <pre><code data-trim data-noescape class="html">
+            &lt;html manifest="example.appcache">
+              ...
+            &lt;/html>
           </code></pre>
+          <pre><code data-trim class="ini">
+            CACHE MANIFEST
+            # v1 47hdggjher62hcv63
+            # This is another comment
+            index.html
+            cache.html
+            style.css
+            image1.png
+
+            # Use from network if available
+            NETWORK:
+            network.html
+
+            # Fallback content
+            FALLBACK:
+            / fallback.html
+          </code></pre>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest</h4>
+          <h4 class="hard-left bits-of-space">Pros</h4>
+          <ul class="indent-left">
+            <li>Works on stubborn browsers (IE, Safari)</li>
+            <li>Conceptually easy for static&dash;like resources</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest</h4>
+          <h4 class="hard-left bits-of-space">Cons</h4>
+          <ul class="indent-left">
+            <li><b>DEPRECATED!</b></li>
+            <li>Implementation is cumbersome</li>
+            <li>Will still likely need another solution for more complicated resources</li>
+          </ul>
         </section>
       </div>
     </div>

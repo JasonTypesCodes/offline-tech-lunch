@@ -72,6 +72,14 @@ ul,ol {
   }
 }
 
+pre code.hljs {
+  display: block;
+}
+
+code.hljs {
+  display: inline;
+}
+
 dl {
   dt {
     font-size: 45px !important;

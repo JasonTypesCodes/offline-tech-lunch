@@ -15,15 +15,15 @@
         </section>
         <section>
           <h2 class="hard-left">Offline Web Application</h2>
-          <p class="lots-of-space hard-left">A <b>web application</b> that has been designed to perform at <b>some capacity</b> while <b>offline</b>.</p>
+          <p class="lots-of-space hard-left">A <b>Progressive Web Application</b> that has been designed to perform at <b>some capacity</b> while <b>offline</b>.</p>
         </section>
         <section>
           <h2 class="hard-left">Offline Web Application</h2>
           <p class="bits-of-space hard-left">At <b>some capacity</b>:</p>
           <ul class="hard-left">
+            <li class="fragment">Communication with user about connection state</li>
             <li class="fragment">Caching server operations for later</li>
             <li class="fragment">Adding/removing features while running</li>
-            <li class="fragment">Communication with user about connection state</li>
             <li class="fragment">Server? We don't need no stinkin' server!</li>
           </ul>
         </section>
@@ -37,7 +37,8 @@
         </section>
         <section>
           <h2 class="hard-left">&#8220;Offline&dash;First&#8221; Development</h2>
-          <p class="bits-of-space hard-left">Much easier to create a new appliction with offline functionality than it is to add it later.</p>
+          <p class="bits-of-space hard-left">Much easier to create a new application with offline functionality than it is to add it later.</p>
+          <p class="bits-of-space hard-left">Much easier to create a new application with offline functionality than it is to add it later.</p>
           <p class="bits-of-space hard-left">Similar idea to &#8220;Mobile&dash;First&#8221; apps.</p>
         </section>
         <section>
@@ -75,7 +76,7 @@
           </code></pre>
           <pre><code data-trim class="ini">
             CACHE MANIFEST
-            # v1 47hdggjher62hcv63
+            # v1 d131dd02c5e6eec4
             # This is another comment
             index.html
             cache.html
@@ -108,6 +109,72 @@
             <li><b>DEPRECATED!</b></li>
             <li>Implementation is cumbersome</li>
             <li>Will still likely need another solution for more complicated resources</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 2 &dash; Service Workers</h4>
+          <p class="hard-left bits-of-space">A JavaScript API that has access to browser cache and can intercept network calls</p>
+          <p class="hard-left bits-of-space">Need to fill this section out a lot more...</p>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Recommendation</h4>
+          <ul class="indent-left">
+            <li>Use ServiceWorker when available</li>
+            <li>Only use App Cache when no other option</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Detecting Network State</h2>
+          <h4 class="hard-left bits-of-space">When is &#8220;Offline&#8221; really &#8220;Offline&#8221;?</h4>
+          <ul class="indent-left">
+            <li class="fragment">When the device has an IP address?</li>
+            <li class="fragment">When the device can reach some arbitrary web site?</li>
+            <li class="fragment">When the application can reach its server?</li>
+          </ul>
+          <p class="hard-left bits-of-space fragment">Do it from the perspective of the application</p>
+        </section>
+        <section>
+          <h2 class="hard-left">Detecting Network State</h2>
+          <h4 class="hard-left">Strategy 1 &dash; <code class="hljs">Navigator.onLine</code></h4>
+          <p class="hard-left">JavaScript Navigator method to check the online status of the browser</p>
+          <ul class="indent-left">
+            <li>Different browsers check different things</li>
+            <li>&#8220;Offline&#8221; statuses are probably correct</li>
+            <li>&#8220;Online&#8221; statuses <b>CANNOT</b> be trusted</li>
+            <li><code class="hljs">window.on[on|off]line</code> events</li>
+            <li><b>Do not</b> use only use this method</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Detecting Network State</h2>
+          <h4 class="hard-left">Strategy 2 &dash; Proactive polling</h4>
+          <p class="hard-left">Poll the server for a small static resource</p>
+          <ul class="indent-left">
+            <li>Server-side cache headers are important</li>
+            <li>Puts extra load on server / network if already online</li>
+            <li>Only use if you have no know network state changes immediately</li>
+            <li>Most useful when already offline and detecting when server is avaiable again</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Detecting Network State</h2>
+          <h4 class="hard-left">Strategy 3 &dash; Reactive watching server requests</h4>
+          <p class="hard-left">Watch requests to the server waiting for a response with no status</p>
+          <ul class="indent-left">
+            <li>Dispatch custom event when status changes</li>
+            <li>Using ServiceWorkers? - Send status change via <code class="hljs">onmessage</code> event</li>
+            <li>If not? Use global handler in XHR or other library</li>
+            <li>Optionally, start polling once offline</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Detecting Network State</h2>
+          <h4 class="hard-left">Recommendation</h4>
+          <ul class="indent-left">
+            <li>Act like application is online until it isn't</li>
+            <li>Only use polling when detecting state change from offline to online</li>
           </ul>
         </section>
       </div>

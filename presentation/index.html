@@ -115,9 +115,60 @@
         </section>
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
-          <h4 class="hard-left">Strategy 2 &dash; Service Workers</h4>
-          <p class="hard-left bits-of-space">A JavaScript API that has access to browser cache and can intercept network calls</p>
-          <p class="hard-left bits-of-space">Need to fill this section out a lot more...</p>
+          <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
+          <p class="hard-left bits-of-space">A specialized JavaScript Web Worker that has access to browser cache and can intercept network calls</p>
+          <ul>
+            <li>Slightly more complicated than App Cache, but much more powerful</li>
+            <li>Does not work in all browsers (<a href="https://jakearchibald.github.io/isserviceworkerready/">yet</a>)</li>
+            <li>Can respond to <b>any</b> request</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 2 &dash; Service Worker &dash; Example</h4>
+          <pre><code data-trim class="javascript">
+            navigator.serviceWorker.register('service-worker.js');
+          </code></pre>
+          <pre><code data-trim class="javascript" style="max-height: 600px">
+            const RESOURCES = [
+              'index.html',
+              'demo.js'
+            ];
+
+            self.addEventListener('install', event => {
+              event.waitUntil(
+                caches.open('MyCache')
+                  .then(cache => cache.addAll(RESOURCES))
+              );
+            });
+
+            self.addEventListener('fetch', event => {
+              event.respondWith(
+                caches.match(event.request).then(cachedResponse => {
+                  if (cachedResponse) {
+                    return cachedResponse;
+                  }
+                  return fetch(event.request);
+                })
+          </code></pre>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
+          <h4 class="hard-left bits-of-space">Pros</h4>
+          <ul class="indent-left">
+            <li>Flexible / Powerful</li>
+            <li>Implementation in JavaScript</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="hard-left">Base Resource Caching</h2>
+          <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
+          <h4 class="hard-left bits-of-space">Cons</h4>
+          <ul class="indent-left">
+            <li>Not yet supported in all major browsers</li>
+            <li>Still a &#8220;Working Draft&#8221;</li>
+          </ul>
         </section>
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
@@ -157,7 +208,7 @@
             <li>Server-side cache headers are important</li>
             <li>Puts extra load on server / network if already online</li>
             <li>Only use if you have no know network state changes immediately</li>
-            <li>Most useful when already offline and detecting when server is avaiable again</li>
+            <li>Most useful when already offline and detecting when server is available again</li>
           </ul>
         </section>
         <section>
@@ -166,7 +217,7 @@
           <p class="hard-left">Watch requests to the server waiting for a response with no status</p>
           <ul class="indent-left">
             <li>Dispatch custom event when status changes</li>
-            <li>Using ServiceWorkers? - Send status change via <code class="hljs">onmessage</code> event</li>
+            <li>Using ServiceWorker? - Send status change via <code class="hljs">onmessage</code> event</li>
             <li>If not? Use global handler in XHR or other library</li>
             <li>Optionally, start polling once offline</li>
           </ul>
@@ -185,7 +236,7 @@
           <ul class="indent-left">
             <li>Tell user that connection has been lost</li>
             <li>Optionally show timer when connection will be attempted again</li>
-            <li>Optionally allow user to continue to use feature queueing up server operations until connection is restored</li>
+            <li>Optionally allow user to continue to use feature queuing up server operations until connection is restored</li>
             <li>Bare minimum that should be done</li>
             <li>Very popular option: Gmail, Slack, ...</li>
           </ul>
@@ -298,7 +349,7 @@
           </ul>
         </section>
         <section>
-          <h2>Demo?</h2>
+          <h2>Demo!</h2>
         </section>
         <section>
           <h2>Questions?</h2>

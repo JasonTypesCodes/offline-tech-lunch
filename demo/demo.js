@@ -1,6 +1,10 @@
 let nextPayload = 1;
 const maxPayload = 3;
 
+function updatePayload() {
+  nextPayload + 1 > maxPayload ? nextPayload = 1 : nextPayload++;
+}
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(() => {
@@ -11,7 +15,10 @@ if ('serviceWorker' in navigator) {
       $('#getMessage').click(() => {
         $.get(`/data/${nextPayload}.json`).then((result) => {
           $('#message').text(result.message);
-          nextPayload + 1 > maxPayload ? nextPayload = 1 : nextPayload++;
+          updatePayload();
+        }).catch(() => {
+          $('#message').html('<span style="color: red;">There was an error!</span>');
+          updatePayload();
         });
       });
     });

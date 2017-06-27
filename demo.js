@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
     .then(() => {
       console.log('Ready!');
       $('#getMessage').click(() => {
-        $.get(`/data/${nextPayload}.json`).then((result) => {
+        $.get(`data/${nextPayload}.json`).then((result) => {
           $('#message').text(result.message);
           updatePayload();
         }).catch(() => {

@@ -23,6 +23,16 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+function sendStatus(status) {
+  return self.clients.matchAll().then(allClients => {
+    allClients.forEach(aClient => {
+      aClient.postMessage(status);
+    });
+
+    return allClients;
+  });
+}
+
 self.addEventListener('fetch', event => {
   console.log('Fetch fired...');
   console.log(event);
@@ -36,7 +46,23 @@ self.addEventListener('fetch', event => {
           return cachedResponse;
         }
 
-        return fetch(event.request);
+        return fetch(event.request).then(response => {
+          return sendStatus('ONLINE').then(() => {
+            return new Response(
+              response.body,
+              {
+                status: response.status,
+                headers: {
+                  'Content-Type': response.headers.get('Content-Type')
+                }
+              }
+            );
+          });
+        }).catch(error => {
+          return sendStatus('OFFLINE').then(() => {
+            return Promise.reject(error);
+          });
+        });
       })
     );
   } else {

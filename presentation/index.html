@@ -45,7 +45,7 @@
         </section>
         <section>
           <h2 class="hard-left">Getting Started</h2>
-          <ol class="bits-of-space">
+          <ol class="bits-of-space indent-left">
             <li class="fragment">Identify basic resources needed to run offline</li>
             <li class="fragment">Pick strategy to cache resources (if needed)</li>
             <li class="fragment">Pick strategy to detect network state</li>
@@ -97,7 +97,7 @@
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
           <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest</h4>
-          <h4 class="hard-left bits-of-space">Pros</h4>
+          <h4 class="hard-left">Pros</h4>
           <ul class="indent-left">
             <li>Works on stubborn browsers (IE, Safari)</li>
             <li>Conceptually easy for static&dash;like resources</li>
@@ -106,7 +106,7 @@
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
           <h4 class="hard-left">Strategy 1 &dash; App Cache Manifest</h4>
-          <h4 class="hard-left bits-of-space">Cons</h4>
+          <h4 class="hard-left">Cons</h4>
           <ul class="indent-left">
             <li><b>DEPRECATED!</b></li>
             <li>Implementation is cumbersome</li>
@@ -117,7 +117,7 @@
           <h2 class="hard-left">Base Resource Caching</h2>
           <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
           <p class="hard-left bits-of-space">A specialized JavaScript Web Worker that has access to browser cache and can intercept network calls</p>
-          <ul>
+          <ul class="indent-left">
             <li>Slightly more complicated than App Cache, but much more powerful</li>
             <li>Does not work in all browsers (<a href="https://jakearchibald.github.io/isserviceworkerready/">yet</a>)</li>
             <li>Can respond to <b>any</b> request</li>
@@ -155,7 +155,7 @@
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
           <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
-          <h4 class="hard-left bits-of-space">Pros</h4>
+          <h4 class="hard-left">Pros</h4>
           <ul class="indent-left">
             <li>Flexible / Powerful</li>
             <li>Implementation in JavaScript</li>
@@ -164,7 +164,7 @@
         <section>
           <h2 class="hard-left">Base Resource Caching</h2>
           <h4 class="hard-left">Strategy 2 &dash; Service Worker</h4>
-          <h4 class="hard-left bits-of-space">Cons</h4>
+          <h4 class="hard-left">Cons</h4>
           <ul class="indent-left">
             <li>Not yet supported in all major browsers</li>
             <li>Still a &#8220;Working Draft&#8221;</li>

@@ -48,15 +48,7 @@ self.addEventListener('fetch', event => {
 
         return fetch(event.request).then(response => {
           return sendStatus('ONLINE').then(() => {
-            return new Response(
-              response.body,
-              {
-                status: response.status,
-                headers: {
-                  'Content-Type': response.headers.get('Content-Type')
-                }
-              }
-            );
+            return response;
           });
         }).catch(error => {
           return sendStatus('OFFLINE').then(() => {

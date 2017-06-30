@@ -217,7 +217,7 @@
           <p class="hard-left">Watch requests to the server waiting for a response with no status</p>
           <ul class="indent-left">
             <li>Dispatch custom event when status changes</li>
-            <li>Using ServiceWorker? - Send status change via <code class="hljs">onmessage</code> event</li>
+            <li>Using ServiceWorker? - Send status change via <code class="hljs">postMessage</code> method</li>
             <li>If not? Use global handler in XHR or other library</li>
             <li>Optionally, start polling once offline</li>
           </ul>
@@ -350,11 +350,33 @@
         </section>
         <section>
           <h2>Demo!</h2>
-          <p class="lots-of-space"><a href="https://voltisubito.github.io/offline-tech-lunch/">Demo Site</a></p>
-          <p class="bits-of-space"><a href="https://github.com/VoltiSubito/offline-tech-lunch/tree/main/demo">Demo Code</a></p>
+          <p class="bits-of-space">
+            <a href="https://voltisubito.github.io/offline-tech-lunch/">Site</a> | 
+            <a href="https://github.com/VoltiSubito/offline-tech-lunch/tree/main/demo">Code</a>
+          </p>
         </section>
         <section>
-          <h2>TODO: Resource Links</h2>
+          <h2 class="hard-left">Resources</h2>
+          <ul class="bits-of-space indent-left">
+            <li>
+              <a href="https://jakearchibald.github.io/isserviceworkerready/">Is Service Worker Ready?</a>
+            </li>
+            <li>
+              <a href="http://caniuse.com/#feat=offline-apps">Can I Use &dash; Offline Apps?</a>
+            </li>
+            <li>
+              <a href="http://caniuse.com/#feat=serviceworkers">Can I Use &dash; Service Workers?</a>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">MDN &dash; Using Service Workers</a>
+            </li>
+            <li>
+              <a href="https://hacks.mozilla.org/2015/11/offline-service-workers/">Offline Recipes for Service Workers</a>
+            </li>
+            <li>
+              <a href="https://ponyfoo.com/articles/serviceworker-messagechannel-postmessage">ServiceWorker, MessageChannel, &amp; postMessage</a>
+            </li>
+          </ul>
         </section>
         <section>
           <h2>Questions?</h2>
